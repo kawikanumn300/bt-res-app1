@@ -15,12 +15,13 @@ const Login = (props: LoginScreenPorps) => {
     const Register = () => props.navigation.navigate("Register");
     const [isSecureEtry, setIsSecureEtry] = useState(true)
 
-    const [email, setEmail] = useState("");
+    
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     
     
     const  ClickLogin = ()=>{
-      if(email=="" || password==""){
+      if(username=="" || password==""){
         Alert.alert(
           "Alert",
           "โปรดกรอกข้อมูลให้ครบทั้ง 2 ช่อง",
@@ -37,18 +38,18 @@ const Login = (props: LoginScreenPorps) => {
       }
 
       else{
-      axios.post('', {
-        USER_EMAIL: email,
+      axios.post('http://192.168.10.144/intern-api/api/BtResUser/login', {
+        USER_USERNAME: username,
         USER_PASSWORD: password
       })
       .then(function (response) {
         if(response.data.IsSuccess == true){
-          props.navigation.navigate("Test",{name:response.data.Value});
+          console.log("Login Success")
         }
         else if (response.data.IsSuccess == false ){
           Alert.alert(
             "Alert",
-            "Email หรือ Password ผิด",
+            response.data.Message,
             [
               {
                 text: "Cancel",
@@ -67,6 +68,7 @@ const Login = (props: LoginScreenPorps) => {
     };
     }
     return (
+      <ScrollView>
         <View style={styles.bg}>
 
             <View style={styles.containertopbar}>
@@ -89,8 +91,8 @@ const Login = (props: LoginScreenPorps) => {
                         style={styles.input}
                         placeholder="Username"
                         underlineColorAndroid="transparent"
-                        value={email}
-                        onChangeText={(text) => setEmail(text)}
+                        value={username}
+                        onChangeText={(text) => setUsername(text)}
                     />
                 </View>
                 <View style={{ height: 20, width: 40, }}></View>
@@ -165,7 +167,7 @@ const Login = (props: LoginScreenPorps) => {
             </View>
 
         </View>
-
+        </ScrollView>
     );
 };
 
