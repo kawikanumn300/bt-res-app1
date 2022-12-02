@@ -11,7 +11,7 @@ interface LoginScreenPorps {
     navigation: any;
 }
 
-const register = (props: LoginScreenPorps) => {
+const Register = (props: LoginScreenPorps) => {
     const [isSecureEtry, setIsSecureEtry] = useState(true)
     const [isSecureEtry1, setIsSecureEtry1] = useState(true)
     const login = () => props.navigation.navigate("login");
@@ -237,4 +237,4 @@ const register = (props: LoginScreenPorps) => {
 };
 
 
-export default register;
+export default Register;

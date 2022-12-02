@@ -12,7 +12,7 @@ interface LoginScreenPorps {
 
 const Login = (props: LoginScreenPorps) => {
     
-    const Register = () => props.navigation.navigate("register");
+    const Register = () => props.navigation.navigate("Register");
     const [isSecureEtry, setIsSecureEtry] = useState(true)
 
     const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ const Login = (props: LoginScreenPorps) => {
       }
 
       else{
-      axios.post('http://192.168.10.144/intern-api-farm/api/InternFarmUser/login', {
+      axios.post('', {
         USER_EMAIL: email,
         USER_PASSWORD: password
       })
