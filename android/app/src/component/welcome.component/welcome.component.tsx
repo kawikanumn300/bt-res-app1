@@ -9,7 +9,7 @@ interface Welcome{
 const welcome =(props: Welcome) => {
   useEffect(() => {
     setTimeout(() => {
-      props.navigation.navigate("login");
+      props.navigation.navigate("Login");
     }, 2000);
   }, []);
 
