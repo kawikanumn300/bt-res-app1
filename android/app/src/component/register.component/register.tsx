@@ -65,7 +65,7 @@ const Register = (props: LoginScreenPorps) => {
                 });
         };
     }
-    return (
+    return (<ScrollView>
         <View style={styles.bg}>
 
             <View style={styles.containertopbar}>
@@ -215,7 +215,7 @@ const Register = (props: LoginScreenPorps) => {
             </View>
 
         </View>
-
+        </ScrollView>
     );
 };
 
