@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         color: '#464646',
     },
     label: {
-        margin: 5,
+        margin: 0,
         fontSize: 18,
         color: '#000000',
         paddingRight:'10%',
@@ -75,10 +75,11 @@ const styles = StyleSheet.create({
     },
     lable2: {
         
-        margin: 5,
+        margin: 0,
         textAlign:'right',
         color: '#FF6813',
         fontSize: 18,
+        paddingBottom:20,
         
     },
     footersection: {

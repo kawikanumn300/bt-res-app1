@@ -124,6 +124,7 @@ const Login = (props: LoginScreenPorps) => {
                     marginTop:10,
                 }}>
                     <Text style={styles.lable2}>ลืมรหัสผ่าน ?</Text>
+                    
                 </View>
                     
                 
@@ -146,7 +147,7 @@ const Login = (props: LoginScreenPorps) => {
                     }}>เข้าสู่ระบบ</Text>
                 </TouchableOpacity>
                 </View>
-                <View style={{ height: 130, }}>
+                <View style={{ height: 200, }}>
                 </View>
 
                 <View style={styles.footersection}>
