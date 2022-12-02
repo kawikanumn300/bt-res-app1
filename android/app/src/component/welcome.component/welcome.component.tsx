@@ -6,7 +6,7 @@ interface Welcome{
   navigation:any;
 }
   
-const welcome =(props: Welcome) => {
+const Welcome =(props: Welcome) => {
   useEffect(() => {
     setTimeout(() => {
       props.navigation.navigate("Login");
@@ -25,4 +25,4 @@ const welcome =(props: Welcome) => {
 }
 
 
-export default welcome;
+export default Welcome;
