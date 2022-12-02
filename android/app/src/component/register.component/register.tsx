@@ -5,6 +5,7 @@ import { ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
 // import Register from "./register";
 import axios from "axios";
 import { styles } from './register.style';
+import Login from "../login.component/login";
 
 interface LoginScreenPorps {
     navigation: any;
@@ -13,6 +14,7 @@ interface LoginScreenPorps {
 const register = (props: LoginScreenPorps) => {
     const [isSecureEtry, setIsSecureEtry] = useState(true)
     const [isSecureEtry1, setIsSecureEtry1] = useState(true)
+    const login = () => props.navigation.navigate("login");
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -22,7 +24,7 @@ const register = (props: LoginScreenPorps) => {
         if (email == "" || password == "") {
             Alert.alert(
                 "Alert",
-                "โปรดกรอกข้อมูลให้ครบทั้ง 2 ช่อง",
+                "โปรดกรอกข้อมูลให้ครบทุกช่อง",
                 [
                     {
                         text: "Cancel",
@@ -147,7 +149,7 @@ const register = (props: LoginScreenPorps) => {
                             secureTextEntry={isSecureEtry1}
                             placeholder="ConfirmPassword"
                             underlineColorAndroid="transparent"
-                            
+
                         />
                         <TouchableOpacity style={{ alignItems: 'center', }} onPress={() => {
                             setIsSecureEtry1((prev) => !prev)
@@ -207,9 +209,24 @@ const register = (props: LoginScreenPorps) => {
                             justifyContent: 'center',
                         }}>ลงทะเบียน</Text>
                     </TouchableOpacity>
+
+                    <View style={styles.footersection}>
+                        <View style={{ flexDirection: "row" }}>
+                            <Text style={styles.label}>
+                                ยกเลิกการลงทะเบียน
+                            </Text>
+                            <Text style={styles.lable2} onPress={login}>
+                                กลับสู่หน้า login
+                            </Text>
+                            <View>
+                            </View>
+                        </View>
+                    </View>
+
                 </View>
-                <View style={{ height: 130, }}>
-                </View>
+
+
+
 
 
             </View>
