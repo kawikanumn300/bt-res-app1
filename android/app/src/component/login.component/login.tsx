@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Text, StyleSheet, View, ScrollView, Image, TextInput, Button, Touchable, TouchableOpacity ,Alert} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
-// import Register from "./register";
 import axios from "axios";
 import { styles } from './login.style';
 
@@ -59,6 +58,7 @@ const Login = (props: LoginScreenPorps) => {
       .then(function (response) {
         if(response.data.IsSuccess == true){
           console.log("Login Success")
+          props.navigation.navigate("Mainmenu");
         }
         else if (response.data.IsSuccess == false ){
           Alert.alert(
