@@ -101,6 +101,12 @@ const styles = StyleSheet.create({
         marginRight:5,
         
       },
-
+      avatar: {
+        paddingTop: 20,
+        height: 100,
+        width: 100,
+        borderRadius: 100,
+        padding: 20,
+      },
 });
 export { styles };

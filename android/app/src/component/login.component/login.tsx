@@ -19,6 +19,20 @@ const Login = (props: LoginScreenPorps) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     
+    const forgetpwd=()=>{
+      Alert.alert(
+        "Alert",
+        "โปรดแจ้งผู้ดูแลระบบ ",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
+    }
     
     const  ClickLogin = ()=>{
       if(username=="" || password==""){
@@ -38,7 +52,7 @@ const Login = (props: LoginScreenPorps) => {
       }
 
       else{
-      axios.post('http://192.168.10.144/intern-api/api/BtResUser/login', {
+       axios.post('http://192.168.10.144/intern-api/api/BtResUser/login', {
         USER_USERNAME: username,
         USER_PASSWORD: password
       })
@@ -125,7 +139,7 @@ const Login = (props: LoginScreenPorps) => {
                 <View style={{
                     marginTop:10,
                 }}>
-                    <Text style={styles.lable2}>ลืมรหัสผ่าน ?</Text>
+                    <Text style={styles.lable2} onPress={forgetpwd}>ลืมรหัสผ่าน ?</Text>
                     
                 </View>
                     

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, ScrollView, Image, TextInput, Button, Touchable, TouchableOpacity, Alert } from "react-native";
+import { Text, StyleSheet, View, ScrollView, Image, TextInput, Button, Touchable, TouchableOpacity, Alert, ImageURISource } from "react-native";
 
 import { ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
-// import Register from "./register";
 import axios from "axios";
 import { styles } from './register.style';
 import Login from "../login.component/login";
-
+import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
 interface LoginScreenPorps {
     navigation: any;
+    onChange?: (image: ImageOrVideo) => void;
+  source: ImageURISource;
 }
 
 const Register = (props: LoginScreenPorps) => {
@@ -23,6 +24,21 @@ const Register = (props: LoginScreenPorps) => {
     const [password, setPassword] = useState("");
     const [confirmpwd, setConfirmpwd] = useState("");
     const [phone, setPhone] = useState("");
+    const [img, setImg] = useState(props.source?.uri || undefined);
+    const [uri, setUri] = React.useState(props.source?.uri || undefined);
+
+    const pickPicture = () => {
+        ImagePicker.openPicker({
+          width: 300,
+          height: 400,
+          cropping: true,
+        }).then(image => {
+          setUri(image.path);
+          setImg(image.filename);
+          props.onChange?.(image);
+        });
+        console.log(uri,img);
+      };
 
     const Clickregister = () => {
         if (email == "" || firstname == "" || lastname == "" || username == "" || password == "" || confirmpwd == "" || phone == "") {
@@ -126,6 +142,13 @@ const Register = (props: LoginScreenPorps) => {
                         Sign up</Text>
 
                 </View>
+                <TouchableOpacity onPress={pickPicture}>
+      <Image
+          style={styles.avatar}
+          {...props}
+          source={uri ? {uri} : props.source}
+        />
+    </TouchableOpacity>
                 <View style={styles.containertopbar}>
                     <View style={{ flexDirection: "row" }}>
                         <View style={styles.rowsearchSection}>
@@ -151,7 +174,6 @@ const Register = (props: LoginScreenPorps) => {
                     </View >
                     <View style={{ height: 20, width: 40, }}></View>
                     <View style={styles.searchSection}>
-                        
                         <TextInput
                             placeholderTextColor="#C2C3C4"
                             style={styles.input}
@@ -163,7 +185,6 @@ const Register = (props: LoginScreenPorps) => {
                     </View>
                     <View style={{ height: 20, width: 40, }}></View>
                     <View style={styles.searchSection}>
-                       
                         <View style={{ justifyContent: 'space-between', flexDirection: 'row', width: 250, }}>
                             <TextInput
                                 placeholderTextColor="#C2C3C4"
@@ -190,7 +211,6 @@ const Register = (props: LoginScreenPorps) => {
                     </View>
                     <View style={{ height: 20, width: 40, }}></View>
                     <View style={styles.searchSection}>
-                     
                         <View style={{ justifyContent: 'space-between', flexDirection: 'row', width: 250, }}>
                             <TextInput
                                 placeholderTextColor="#C2C3C4"
@@ -217,7 +237,6 @@ const Register = (props: LoginScreenPorps) => {
                     </View>
                     <View style={{ height: 20, width: 40, }}></View>
                     <View style={styles.searchSection}>
-                     
                         <TextInput
                             placeholderTextColor="#C2C3C4"
                             style={styles.input}
@@ -229,7 +248,6 @@ const Register = (props: LoginScreenPorps) => {
                     </View>
                     <View style={{ height: 20, width: 40, }}></View>
                     <View style={styles.searchSection}>
-            
                         <TextInput
                             placeholderTextColor="#C2C3C4"
                             style={styles.input}
@@ -239,16 +257,12 @@ const Register = (props: LoginScreenPorps) => {
                             onChangeText={(text) => setPhone(text)}
                         />
                     </View>
-
-
                     <View style={{ height: 50, }}>
                     </View>
                     <View style={styles.center}>
                         <TouchableOpacity
-
                             style={styles.button}
-                            onPress={Clickregister}
-                        >
+                            onPress={Clickregister}>
                             <Text style={{
                                 fontSize: 20,
                                 lineHeight: 25,
@@ -274,17 +288,10 @@ const Register = (props: LoginScreenPorps) => {
                         </View>
 
                     </View>
-
-
-
-
-
                 </View>
 
             </View>
         </ScrollView>
     );
 };
-
-
 export default Register;
