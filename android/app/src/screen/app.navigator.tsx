@@ -14,7 +14,7 @@ const AppNavigator = () => (
         <Navigator initialRouteName="Welcome">
             <Screen options={{ headerShown: false }} name="Welcome" component={Welcome}></Screen>
             <Screen options={{ headerShown: false }} name="Login" component={Login}></Screen>
-            <Screen options={{ headerShown: false }} name="Register" component={Register}></Screen>
+            <Screen options={{headerShown:false }} name ="Register" component={Register}></Screen>
         </Navigator>
     </NavigationContainer>
 )
