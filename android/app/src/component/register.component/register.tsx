@@ -6,16 +6,13 @@ import axios from "axios";
 import { styles } from './register.style';
 import Login from "../login.component/login";
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
-interface RegisterScreenPorps {
+interface LoginScreenPorps {
     navigation: any;
-
-}
-interface image {
     onChange?: (image: ImageOrVideo) => void;
-    source: ImageURISource;
+  source: ImageURISource;
 }
 
-const Register = (props: RegisterScreenPorps, props1: image) => {
+const Register = (props: LoginScreenPorps) => {
     const [isSecureEtry, setIsSecureEtry] = useState(true)
     const [isSecureEtry1, setIsSecureEtry1] = useState(true)
     const login = () => props.navigation.navigate("Login");
@@ -27,8 +24,8 @@ const Register = (props: RegisterScreenPorps, props1: image) => {
     const [password, setPassword] = useState("");
     const [confirmpwd, setConfirmpwd] = useState("");
     const [phone, setPhone] = useState("");
-    const [img, setImg] = useState(props1.source?.uri || undefined);
-    const [uri, setUri] = React.useState(props1.source?.uri || undefined);
+    const [img, setImg] = useState(props.source?.uri || undefined);
+    const [uri, setUri] = React.useState(props.source?.uri || undefined);
 
     const pickPicture = () => {
         ImagePicker.openPicker({
@@ -36,11 +33,9 @@ const Register = (props: RegisterScreenPorps, props1: image) => {
             height: 400,
             cropping: true,
         }).then(image => {
-            setUri(image.path);
-            setImg(image.filename || image.path.split('/').pop());
-            props1.onChange?.(image);
-            console.log(img);
-            console.log(uri);
+          setUri(image.path);
+          setImg(image.filename);
+          props.onChange?.(image);
         });
 
     };
@@ -153,12 +148,12 @@ const Register = (props: RegisterScreenPorps, props1: image) => {
 
                 </View>
                 <TouchableOpacity onPress={pickPicture}>
-                    <Image
-                        style={styles.avatar}
-                        {...props}
-                        source={uri ? { uri } : props1.source}
-                    />
-                </TouchableOpacity>
+      <Image
+          style={styles.avatar}
+          {...props}
+          source={uri ? {uri} : props.source}
+        />
+    </TouchableOpacity>
                 <View style={styles.containertopbar}>
                     <View style={{ flexDirection: "row" }}>
                         <View style={styles.rowsearchSection}>
