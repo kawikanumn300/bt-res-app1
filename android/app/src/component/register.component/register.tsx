@@ -8,14 +8,14 @@ import Login from "../login.component/login";
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
 interface RegisterScreenPorps {
     navigation: any;
-   
+
 }
-interface image{
+interface image {
     onChange?: (image: ImageOrVideo) => void;
     source: ImageURISource;
 }
 
-const Register = (props: RegisterScreenPorps,props1:image) => {
+const Register = (props: RegisterScreenPorps, props1: image) => {
     const [isSecureEtry, setIsSecureEtry] = useState(true)
     const [isSecureEtry1, setIsSecureEtry1] = useState(true)
     const login = () => props.navigation.navigate("Login");
@@ -32,16 +32,18 @@ const Register = (props: RegisterScreenPorps,props1:image) => {
 
     const pickPicture = () => {
         ImagePicker.openPicker({
-          width: 300,
-          height: 400,
-          cropping: true,
+            width: 300,
+            height: 400,
+            cropping: true,
         }).then(image => {
-          setUri(image.path);
-          props1.onChange?.(image);
-          console.log(image);
+            setUri(image.path);
+            setImg(image.filename || image.path.split('/').pop());
+            props1.onChange?.(image);
+            console.log(img);
+            console.log(uri);
         });
-        
-      };
+
+    };
 
     const Clickregister = () => {
         if (email == "" || firstname == "" || lastname == "" || username == "" || password == "" || confirmpwd == "" || phone == "") {
@@ -77,24 +79,29 @@ const Register = (props: RegisterScreenPorps,props1:image) => {
                 setPassword("");
             } else {
 
-                var data = JSON.stringify({
-                    "USER_NAME": firstname,
-                    "USER_LASTNAME": lastname,
-                    "USER_EMAIL": email,
-                    "USER_USERNAME": username,
-                    "USER_PASSWORD": password,
-                    "USER_PHONE_NUMBER": phone,
-                    "USER_STATUS": "A",
-                    "USER_RIGHTS": "U",
-                });
+                const formData = new FormData()
+                formData.append('USER_NAME', firstname)
+                formData.append('USER_LASTNAME', lastname)
+                formData.append('USER_EMAIL', email)
+                formData.append('USER_USERNAME', username)
+                formData.append('USER_PASSWORD', password)
+                formData.append('USER_PHONE_NUMBER', phone)
+                formData.append('USER_STATUS', "A")
+                formData.append('USER_RIGHTS', "U")
+                // "USER_LASTNAME": lastname,
+                // "USER_EMAIL": email,
+                // "USER_ USERNAME": username,
+                // "USER_PASSWORD": password,
+                // "USER_PHONE_NUMBER": phone,
+                // "USER_STATUS": "A",
+                // "USER_RIGHTS": "U",
+
 
                 var config = {
                     method: 'post',
                     url: 'http://192.168.10.144/intern-api/api/BtResUser',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    data: data
+                    headers: { "Content-Type": "multipart/form-data" },
+                    data: formData
                 };
 
                 axios(config)
@@ -146,12 +153,12 @@ const Register = (props: RegisterScreenPorps,props1:image) => {
 
                 </View>
                 <TouchableOpacity onPress={pickPicture}>
-      <Image
-          style={styles.avatar}
-          {...props}
-          source={uri ? {uri} : props1.source}
-        />
-    </TouchableOpacity>
+                    <Image
+                        style={styles.avatar}
+                        {...props}
+                        source={uri ? { uri } : props1.source}
+                    />
+                </TouchableOpacity>
                 <View style={styles.containertopbar}>
                     <View style={{ flexDirection: "row" }}>
                         <View style={styles.rowsearchSection}>
@@ -297,4 +304,5 @@ const Register = (props: RegisterScreenPorps,props1:image) => {
         </ScrollView>
     );
 };
+
 export default Register;
