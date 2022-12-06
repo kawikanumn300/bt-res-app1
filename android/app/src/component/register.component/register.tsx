@@ -6,13 +6,16 @@ import axios from "axios";
 import { styles } from './register.style';
 import Login from "../login.component/login";
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
-interface LoginScreenPorps {
+interface RegisterScreenPorps {
     navigation: any;
+   
+}
+interface image{
     onChange?: (image: ImageOrVideo) => void;
-  source: ImageURISource;
+    source: ImageURISource;
 }
 
-const Register = (props: LoginScreenPorps) => {
+const Register = (props: RegisterScreenPorps,props1:image) => {
     const [isSecureEtry, setIsSecureEtry] = useState(true)
     const [isSecureEtry1, setIsSecureEtry1] = useState(true)
     const login = () => props.navigation.navigate("Login");
@@ -24,8 +27,8 @@ const Register = (props: LoginScreenPorps) => {
     const [password, setPassword] = useState("");
     const [confirmpwd, setConfirmpwd] = useState("");
     const [phone, setPhone] = useState("");
-    const [img, setImg] = useState(props.source?.uri || undefined);
-    const [uri, setUri] = React.useState(props.source?.uri || undefined);
+    const [img, setImg] = useState(props1.source?.uri || undefined);
+    const [uri, setUri] = React.useState(props1.source?.uri || undefined);
 
     const pickPicture = () => {
         ImagePicker.openPicker({
@@ -34,10 +37,10 @@ const Register = (props: LoginScreenPorps) => {
           cropping: true,
         }).then(image => {
           setUri(image.path);
-          setImg(image.filename);
-          props.onChange?.(image);
+          props1.onChange?.(image);
+          console.log(image);
         });
-        console.log(uri,img);
+        
       };
 
     const Clickregister = () => {
@@ -99,7 +102,7 @@ const Register = (props: LoginScreenPorps) => {
                         if (response.data.IsSuccess == false) {
                             Alert.alert(
                                 "Alert",
-                                response.data.Massage,
+                                "ไม่สามารถสมัครสมาชิกได้ เนื่องจากชื่อผู้ใช้ซ้ำ",
                                 [
                                     { text: "OK", onPress: () => console.log("OK Pressed") }
                                 ]
@@ -119,7 +122,7 @@ const Register = (props: LoginScreenPorps) => {
                             console.log("Sign Up สำเร็จ");
                             props.navigation.navigate("Login");
                         }
-                        console.log(JSON.stringify(response.data));
+                        console.log((response.data));
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -146,7 +149,7 @@ const Register = (props: LoginScreenPorps) => {
       <Image
           style={styles.avatar}
           {...props}
-          source={uri ? {uri} : props.source}
+          source={uri ? {uri} : props1.source}
         />
     </TouchableOpacity>
                 <View style={styles.containertopbar}>
