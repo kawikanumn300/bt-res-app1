@@ -6,13 +6,13 @@ import axios from "axios";
 import { styles } from './register.style';
 import Login from "../login.component/login";
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
-interface LoginScreenPorps {
+interface RegisterScreenPorps {
     navigation: any;
     onChange?: (image: ImageOrVideo) => void;
   source: ImageURISource;
 }
 
-const Register = (props: LoginScreenPorps) => {
+const Register = (props: RegisterScreenPorps) => {
     const [isSecureEtry, setIsSecureEtry] = useState(true)
     const [isSecureEtry1, setIsSecureEtry1] = useState(true)
     const login = () => props.navigation.navigate("Login");

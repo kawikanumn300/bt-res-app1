@@ -5,6 +5,7 @@ import App from "../../../../App";
 import Welcome from "../component/welcome.component/welcome.component";
 import Login from "../component/login.component/login";
 import Register from "../component/register.component/Register";
+import Mainmenu from "../component/mainmenu.component/Mainmenu";
 
 
 
@@ -15,6 +16,7 @@ const AppNavigator = () => (
             <Screen options={{ headerShown: false }} name="Welcome" component={Welcome}></Screen>
             <Screen options={{ headerShown: false }} name="Login" component={Login}></Screen>
             <Screen options={{ headerShown: false }} name="Register" component={Register}></Screen>
+            <Screen options={{ headerShown: false }} name="Mainmenu" component={Mainmenu}></Screen>
         </Navigator>
     </NavigationContainer>
 )
