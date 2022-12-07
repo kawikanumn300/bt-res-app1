@@ -14,7 +14,7 @@ import { RotateInUpLeft } from "react-native-reanimated";
 
 const Drawer = createDrawerNavigator();
 const Screen = createNativeStackNavigator();
-const route = useRoute();
+const routea = useRoute();
 const AppNavigator = () => (
 
     <Screen.Navigator initialRouteName="Welcome" >
