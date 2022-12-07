@@ -58,7 +58,7 @@ const Login = (props: LoginScreenPorps) => {
       .then(function (response) {
         if(response.data.IsSuccess == true){
           console.log("Login Success")
-          props.navigation.navigate("Mainmenu");
+          props.navigation.navigate("Mainmenu",{fname : response.data.Value});
         }
         else if (response.data.IsSuccess == false ){
           Alert.alert(

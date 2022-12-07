@@ -8,11 +8,14 @@ import Login from "../login.component/login";
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
 interface LoginScreenPorps {
     navigation: any;
+
+}
+interface images {
     onChange?: (image: ImageOrVideo) => void;
-  source: ImageURISource;
+    source: ImageURISource;
 }
 
-const Register = (props: LoginScreenPorps) => {
+const Register = (props: LoginScreenPorps, props1: images) => {
     const [isSecureEtry, setIsSecureEtry] = useState(true)
     const [isSecureEtry1, setIsSecureEtry1] = useState(true)
     const login = () => props.navigation.navigate("Login");
@@ -24,8 +27,8 @@ const Register = (props: LoginScreenPorps) => {
     const [password, setPassword] = useState("");
     const [confirmpwd, setConfirmpwd] = useState("");
     const [phone, setPhone] = useState("");
-    const [img, setImg] = useState(props.source?.uri || undefined);
-    const [uri, setUri] = React.useState(props.source?.uri || undefined);
+    const [img, setImg] = useState(props1.source?.uri || undefined);
+    const [uri, setUri] = React.useState(props1.source?.uri || undefined);
 
     const pickPicture = () => {
         ImagePicker.openPicker({
@@ -33,14 +36,14 @@ const Register = (props: LoginScreenPorps) => {
             height: 400,
             cropping: true,
         }).then(image => {
-          setUri(image.path);
-          setImg(image.filename);
-          props.onChange?.(image);
+            setUri(image.path);
+            setImg(image.filename);
+            props1.onChange?.(image);
         });
 
     };
 
-    const Clickregister = () => {
+    const Clickregister = async () => {
         if (email == "" || firstname == "" || lastname == "" || username == "" || password == "" || confirmpwd == "" || phone == "") {
             Alert.alert(
                 "Alert",
@@ -74,32 +77,34 @@ const Register = (props: LoginScreenPorps) => {
                 setPassword("");
             } else {
 
-                const formData = new FormData()
-                formData.append('USER_NAME', firstname)
-                formData.append('USER_LASTNAME', lastname)
-                formData.append('USER_EMAIL', email)
-                formData.append('USER_USERNAME', username)
-                formData.append('USER_PASSWORD', password)
-                formData.append('USER_PHONE_NUMBER', phone)
-                formData.append('USER_STATUS', "A")
-                formData.append('USER_RIGHTS', "U")
-                // "USER_LASTNAME": lastname,
-                // "USER_EMAIL": email,
-                // "USER_ USERNAME": username,
-                // "USER_PASSWORD": password,
-                // "USER_PHONE_NUMBER": phone,
-                // "USER_STATUS": "A",
-                // "USER_RIGHTS": "U",
-
+                // const formData = new FormData()
+                // formData.append('USER_NAME', firstname)
+                // formData.append('USER_LASTNAME', lastname)
+                // formData.append('USER_EMAIL', email)
+                // formData.append('USER_USERNAME', username)
+                // formData.append('USER_PASSWORD', password)
+                // formData.append('USER_PHONE_NUMBER', phone)
+                // formData.append('USER_STATUS', "A")
+                // formData.append('USER_RIGHTS', "U")
+                const data = {
+                    "USER_NAME": firstname,
+                    "USER_LASTNAME": lastname,
+                    "USER_EMAIL": email,
+                    "USER_USERNAME": username,
+                    "USER_PASSWORD": password,
+                    "USER_PHONE_NUMBER": phone,
+                    "USER_STATUS": "A",
+                    "USER_RIGHTS": "U",
+                }
 
                 var config = {
                     method: 'post',
                     url: 'http://192.168.10.144/intern-api/api/BtResUser',
-                    headers: { "Content-Type": "multipart/form-data" },
-                    data: formData
+                    headers: { 'Content-Type': 'application/json' },
+                    data: data
                 };
 
-                axios(config)
+                await axios(config)
                     .then(function (response) {
                         if (response.data.IsSuccess == false) {
                             Alert.alert(
@@ -118,11 +123,11 @@ const Register = (props: LoginScreenPorps) => {
                                 "Alert",
                                 "Sign Up สำเร็จ ",
                                 [
-                                    { text: "OK", onPress: () => console.log("OK Pressed") }
+                                    { text: "OK", onPress: () => props.navigation.navigate("Login") }
                                 ]
                             );
                             console.log("Sign Up สำเร็จ");
-                            props.navigation.navigate("Login");
+
                         }
                         console.log((response.data));
                     })
@@ -148,12 +153,12 @@ const Register = (props: LoginScreenPorps) => {
 
                 </View>
                 <TouchableOpacity onPress={pickPicture}>
-      <Image
-          style={styles.avatar}
-          {...props}
-          source={uri ? {uri} : props.source}
-        />
-    </TouchableOpacity>
+                    <Image
+                        style={styles.avatar}
+                        {...props}
+                        source={uri ? { uri } : props1.source}
+                    />
+                </TouchableOpacity>
                 <View style={styles.containertopbar}>
                     <View style={{ flexDirection: "row" }}>
                         <View style={styles.rowsearchSection}>

@@ -4,38 +4,28 @@ import axios from "axios";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { styles } from './HomeScreen.style';
-import { DrawerContent } from '../../DrawerContent';
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    </View>
-  );
+import Mydrawer from "../../Drawer/Mydrawer";
+import Second from "../second.component/Second";
+interface HomeScreenPorps {
+  [x: string]: any;
+  navigation: any;
+  route:any;
 }
 
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
+
+
+const HomeScreen =(props:HomeScreenPorps) =>{
+  
+  return(
+    <>
+
+
+   
+  <Text>{props.route.params?.name}</Text>
+    
+    
+    </>
+  )
 }
-const Drawer = createDrawerNavigator();
-
-export default function HomeScreen() {
-  return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
-};
-
 
 export default HomeScreen;
