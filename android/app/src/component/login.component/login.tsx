@@ -5,6 +5,8 @@ import { ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
 import axios from "axios";
 import { styles } from './login.style';
 import { baseUrl } from "../setting";
+
+
 interface LoginScreenPorps {
     navigation: any;
 }
@@ -35,6 +37,7 @@ const Login = (props: LoginScreenPorps) => {
     }
     
     const  ClickLogin = ()=>{
+    
       if(username=="" || password==""){
         Alert.alert(
           "Alert",
@@ -52,7 +55,7 @@ const Login = (props: LoginScreenPorps) => {
       }
 
       else{
-       axios.post({baseUrl}+'/BtResUser/login', {
+       axios.post(baseUrl+'/BtResUser/login', {
         USER_USERNAME: username,
         USER_PASSWORD: password
       })

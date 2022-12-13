@@ -102,7 +102,7 @@ const Register = (props: LoginScreenPorps, props1: images) => {
 
                 var config = {
                     method: 'post',
-                    url: {baseUrl}+'/BtResUser',
+                    url: '${baseUrl}/BtResUser',
                     headers: { 'Content-Type': 'application/json' },
                     data: data
                 };

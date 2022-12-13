@@ -19,7 +19,7 @@ const AppNavigator = () => (
     <Screen.Navigator initialRouteName="Welcome" >
         <Screen.Screen options={{ headerShown: false }} name="Welcome" component={Welcome}></Screen.Screen>
         <Screen.Screen options={{ headerShown: false }} name="Login" component={Login}></Screen.Screen>
-        <Screen.Screen options={{ headerShown: false }} name="Register" component={Register}></Screen.Screen>
+        <Screen.Screen options={{ headerShown: true , title: "Sign Up" }} name="Register" component={Register}></Screen.Screen>
         <Screen.Screen options={({ route }) => ({ title: route.params?.fname })} name="Mainmenu" component={Mainmenu}></Screen.Screen>
     </Screen.Navigator>
 
