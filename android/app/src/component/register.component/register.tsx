@@ -6,6 +6,9 @@ import axios from "axios";
 import { styles } from './register.style';
 import Login from "../login.component/login";
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
+import { baseUrl } from "../setting";
+
+
 interface LoginScreenPorps {
     navigation: any;
 
@@ -99,7 +102,7 @@ const Register = (props: LoginScreenPorps, props1: images) => {
 
                 var config = {
                     method: 'post',
-                    url: 'http://192.168.10.144/intern-api/api/BtResUser',
+                    url: {baseUrl}+'/BtResUser',
                     headers: { 'Content-Type': 'application/json' },
                     data: data
                 };
@@ -140,31 +143,22 @@ const Register = (props: LoginScreenPorps, props1: images) => {
     return (
         <ScrollView>
             <View style={styles.bg}>
-
                 <View style={styles.containertopbar}>
                     <Text style={{
                         fontSize: 28,
                         fontWeight: 'bold',
                         color: 'black',
-                        paddingTop: 150,
+                        paddingTop: 20,
                         fontFamily: 'Mali-Regular',
                     }}>
                         Sign up</Text>
-
                 </View>
-                <TouchableOpacity onPress={pickPicture}>
-                    <Image
-                        style={styles.avatar}
-                        {...props}
-                        source={uri ? { uri } : props1.source}
-                    />
-                </TouchableOpacity>
-                <View style={styles.containertopbar}>
+                <View style={styles.container}>
                     <View style={{ flexDirection: "row" }}>
                         <View style={styles.rowsearchSection}>
                             <TextInput
                                 placeholderTextColor="#C2C3C4"
-                                style={styles.input}
+                                style={styles.inputname}
                                 placeholder="FirstName"
                                 underlineColorAndroid="transparent"
                                 value={firstname}
@@ -174,7 +168,7 @@ const Register = (props: LoginScreenPorps, props1: images) => {
                         <View style={styles.rowsearchSection}>
                             <TextInput
                                 placeholderTextColor="#C2C3C4"
-                                style={styles.input}
+                                style={styles.inputname}
                                 placeholder="Last Name"
                                 underlineColorAndroid="transparent"
                                 value={lastname}
@@ -283,22 +277,23 @@ const Register = (props: LoginScreenPorps, props1: images) => {
                                 justifyContent: 'center',
                             }}>ลงทะเบียน</Text>
                         </TouchableOpacity>
+                    </View>
 
-                        <View style={styles.footersection}>
-                            <View style={{ flexDirection: "row" }}>
-                                <Text style={styles.label}>
-                                    ยกเลิกการลงทะเบียน
-                                </Text>
-                                <Text style={styles.lable2} onPress={login}>
-                                    กลับสู่หน้า login
-                                </Text>
-                                <View>
-                                </View>
-                            </View>
+                </View>
+                <View style={styles.footersection}>
+                    <View style={{ flexDirection: "row" }}>
+                        <Text style={styles.label}>
+                            ยกเลิกการลงทะเบียน
+                        </Text>
+                        <Text style={styles.lable2} onPress={login}>
+                            กลับสู่หน้า login
+                        </Text>
+                        <View>
                         </View>
-
                     </View>
                 </View>
+
+
 
             </View>
         </ScrollView>

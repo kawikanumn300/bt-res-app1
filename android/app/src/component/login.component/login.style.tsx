@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         margin: '10%',
         marginTop: 0,
         justifyContent: 'flex-start',
+       // borderWidth:1,
     },
     container: {
         margin: '10%',
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
         margin: 5,
         fontSize: 18,
         color: '#000000',
-        paddingRight:'10%',
+        paddingRight:'5%',
 
     },
     lable2: {

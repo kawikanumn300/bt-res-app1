@@ -4,12 +4,13 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
 import axios from "axios";
 import { styles } from './login.style';
-
+import { baseUrl } from "../setting";
 interface LoginScreenPorps {
     navigation: any;
 }
 
 const Login = (props: LoginScreenPorps) => {
+  
     
     const Register = () => props.navigation.navigate("Register");
     const [isSecureEtry, setIsSecureEtry] = useState(true)
@@ -51,7 +52,7 @@ const Login = (props: LoginScreenPorps) => {
       }
 
       else{
-       axios.post('http://192.168.10.144/intern-api/api/BtResUser/login', {
+       axios.post({baseUrl}+'/BtResUser/login', {
         USER_USERNAME: username,
         USER_PASSWORD: password
       })
@@ -90,7 +91,7 @@ const Login = (props: LoginScreenPorps) => {
                     fontSize: 28,
                     fontWeight: 'bold',
                     color: 'black',
-                    paddingTop:150,
+                    paddingTop:"15%",
                     fontFamily:'Mali-Regular',
                 }}>
                     Log In</Text>

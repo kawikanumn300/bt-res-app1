@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     bg: {
         backgroundColor: '#FFFFFF',
         flex: 1,
+       // borderWidth:1,
     },
     text:{
         fontFamily:'Mali-Regular',
@@ -11,13 +12,14 @@ const styles = StyleSheet.create({
     containertopbar: {
         margin: '10%',
         marginTop: 0,
+       // borderWidth:1,
         justifyContent: 'flex-start',
     },
     container: {
         margin: '10%',
         marginTop: 10,
         justifyContent: 'flex-start',
-        alignItems: 'center',
+       // borderWidth:1,
     },
 
     button: {
@@ -52,11 +54,19 @@ const styles = StyleSheet.create({
     input: {
         paddingTop: 10,
         paddingRight: 10,
-        paddingBottom: 10,
-        paddingLeft: 0,
+    //    borderWidth:1,
+        paddingLeft: 13,
         fontSize: 20,
         color: '#464646',
         width: '80%',
+    },inputname: {
+        paddingTop: 10,
+        paddingRight: 10,
+       // borderWidth:1,
+        paddingLeft: 13,
+        fontSize: 20,
+        color: '#464646',
+        
     },
     action: {
         marginLeft: '40%',
@@ -79,11 +89,15 @@ const styles = StyleSheet.create({
         textAlign:'right',
         color: '#FF6813',
         fontSize: 18,
-        paddingBottom:20,
+     
         
     },
     footersection: {
-        marginTop:'20%',
+        
+        margin: "10%",
+        marginTop: 10,
+        justifyContent: 'flex-start',
+       // borderWidth:1,
 
     },
     center:{
@@ -92,7 +106,7 @@ const styles = StyleSheet.create({
 
     },
     rowsearchSection: {
-        alignItems: 'center',
+       // alignItems: 'center',
         backgroundColor: '#EAEAEA',
         borderColor: '#D1D1D1',
         borderWidth: 2,

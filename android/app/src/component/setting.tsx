@@ -1,0 +1,1 @@
+export const baseUrl = 'http://192.168.10.144/intern-api/api';
