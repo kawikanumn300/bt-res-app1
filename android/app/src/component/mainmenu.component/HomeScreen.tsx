@@ -22,7 +22,6 @@ const HomeScreen =(props:HomeScreenPorps) =>{
     <>
 
 
-<<<<<<< HEAD
    
   <Text>{props.route.params?.fname}</Text>
   <TouchableOpacity style={styles.bg}>
@@ -37,10 +36,8 @@ const HomeScreen =(props:HomeScreenPorps) =>{
                     </View>
                 </View>
             </TouchableOpacity>
-=======
    </>
     
->>>>>>> e781152f0484a621ecd5d19e1fdc4bc17f3e405c
     
   )
 }
@@ -54,7 +51,7 @@ const styles = StyleSheet.create({
       backgroundColor : '#FFFFFF',
       overflow : 'hidden',
       shadowRadius:10,
-      shadowColor:
+
       
   },
 

@@ -52,33 +52,9 @@ const Login = (props: LoginScreenPorps) => {
       );
       console.log("email ro password is valid");
     }
-<<<<<<< HEAD
-    
-    const  ClickLogin = ()=>{
-    
-      if(username=="" || password==""){
-        Alert.alert(
-          "Alert",
-          "โปรดกรอกข้อมูลให้ครบทั้ง 2 ช่อง",
-          [
-            {
-              text: "Cancel",
-              onPress: () => console.log("Cancel Pressed"),
-              style: "cancel"
-            },
-            { text: "OK", onPress: () => console.log("OK Pressed") }
-          ]
-        );
-        console.log("email ro password is valid");
-      }
-
-      else{
-       axios.post(baseUrl+'/BtResUser/login', {
-=======
 
     else {
       axios.post( baseUrl  + '/BtResUser/login', {
->>>>>>> e781152f0484a621ecd5d19e1fdc4bc17f3e405c
         USER_USERNAME: username,
         USER_PASSWORD: password
       })
