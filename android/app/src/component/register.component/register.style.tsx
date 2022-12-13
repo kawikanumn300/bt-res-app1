@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
         margin: '10%',
         marginTop: 0,
        // borderWidth:1,
+       paddingTop: 0,
         justifyContent: 'flex-start',
     },
     container: {
@@ -21,7 +22,12 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
        // borderWidth:1,
     },
-
+    btnexit:{
+        height: 50,
+        width: 50,
+        borderRadius: 30,
+        backgroundColor: "#095FC2",
+    },
     button: {
         height: 50,
         width: 290,
@@ -54,11 +60,11 @@ const styles = StyleSheet.create({
     input: {
         paddingTop: 10,
         paddingRight: 10,
-    //    borderWidth:1,
+       // borderWidth:1,
         paddingLeft: 13,
         fontSize: 20,
         color: '#464646',
-        width: '80%',
+        width: '100%',
     },inputname: {
         paddingTop: 10,
         paddingRight: 10,
@@ -95,7 +101,7 @@ const styles = StyleSheet.create({
     footersection: {
         
         margin: "10%",
-        marginTop: 10,
+        marginTop: 40,
         justifyContent: 'flex-start',
        // borderWidth:1,
 

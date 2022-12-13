@@ -4,13 +4,14 @@ const styles = StyleSheet.create({
     bg: {
         backgroundColor: '#FFFFFF',
         flex: 1,
+        
     },
     text:{
         fontFamily:'Mali-Regular',
     },
     containertopbar: {
         margin: '10%',
-        marginTop: 0,
+        marginTop: 70,
         justifyContent: 'flex-start',
        // borderWidth:1,
     },
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
         
     },
     footersection: {
-        marginTop:'20%',
+        marginTop:'1%',
 
     },
     tinyLogo: {

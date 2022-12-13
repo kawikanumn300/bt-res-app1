@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Text, StyleSheet, View, ScrollView, Image, TextInput, Button, Touchable, TouchableOpacity, Alert, ImageURISource } from "react-native";
-
+import Icon from "react-native-vector-icons/FontAwesome5";
 import { ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
 import axios from "axios";
 import { styles } from './register.style';
@@ -102,7 +102,7 @@ const Register = (props: LoginScreenPorps, props1: images) => {
 
                 var config = {
                     method: 'post',
-                    url: {baseUrl}+'/BtResUser',
+                    url:  baseUrl  + '/BtResUser',
                     headers: { 'Content-Type': 'application/json' },
                     data: data
                 };
@@ -141,8 +141,9 @@ const Register = (props: LoginScreenPorps, props1: images) => {
         }
     }
     return (
-        <ScrollView>
-            <View style={styles.bg}>
+
+        <View style={styles.bg}>
+            <ScrollView>
                 <View style={styles.containertopbar}>
                     <Text style={{
                         fontSize: 28,
@@ -151,7 +152,7 @@ const Register = (props: LoginScreenPorps, props1: images) => {
                         paddingTop: 20,
                         fontFamily: 'Mali-Regular',
                     }}>
-                        Sign up</Text>
+                </Text>
                 </View>
                 <View style={styles.container}>
                     <View style={{ flexDirection: "row" }}>
@@ -199,7 +200,7 @@ const Register = (props: LoginScreenPorps, props1: images) => {
                                 value={password}
                                 onChangeText={(text) => setPassword(text)}
                             />
-                            <TouchableOpacity style={{ alignItems: 'center', }} onPress={() => {
+                            <TouchableOpacity style={{ alignItems: 'flex-end', /*borderWidth:1,*/}} onPress={() => {
                                 setIsSecureEtry((prev) => !prev)
                             }}>
                                 <Text style={{
@@ -294,9 +295,9 @@ const Register = (props: LoginScreenPorps, props1: images) => {
                 </View>
 
 
+            </ScrollView>
+        </View>
 
-            </View>
-        </ScrollView>
     );
 };
 
