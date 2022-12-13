@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
       backgroundColor : '#FFFFFF',
       overflow : 'hidden',
       shadowRadius:10,
-      shadowColor:,
+      shadowColor:
       
   },
 
